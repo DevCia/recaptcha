@@ -37,8 +37,8 @@ In the form, it is necessary to import the script that performs the request to r
 
 In the Send class, the Captcha class is imported, which makes the request returning some data.
 
-This request returns the score, which goes from 0 to 5.
-The closer to 5, it means you are less likely to be a robot performing the submit. This way you can define the validation accuracy according to the security of your software.
+This request returns the score, which goes from .00 to 1.0.
+The closer to 1.0, it means you are less likely to be a robot performing the submit. This way you can define the validation accuracy according to the security of your software.
 
 ```PHP
 <?php
