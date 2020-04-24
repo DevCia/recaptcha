@@ -27,3 +27,10 @@ grecaptcha.ready(function () {
         .then(token => console.log(token));
 });
 ```
+
+In the form, it is necessary to import the script that performs the request to return the token and the reCAPTCHA api script, passing the site key.
+
+```HTML
+<script src="https://www.google.com/recaptcha/api.js?render=<?php echo SITE_KEY; ?>"></script>
+<script src="./js/reCAPTCHA.js"></script>
+```
