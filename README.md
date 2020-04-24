@@ -5,9 +5,9 @@
 
 https://www.google.com/recaptcha/admin/create
 
-After creating your website, you will generate two keys. The site key is the secret.
+###### After creating your website, you will generate two keys. The site key is the secret.
 
-Enter the keys in the file Config/Config.php
+###### Enter the keys in the file Config/Config.php
 
 ```PHP
 <?php
@@ -16,9 +16,9 @@ define("SITE_KEY", "Your site key here");
 define("SECRET_KEY", "Your secret key here");
 ```
 
-When the login page is loaded, a request will be executed returning a token.
+###### When the login page is loaded, a request will be executed returning a token.
 
-Enter the site key in the request.
+###### Enter the site key in the request.
 
 ```JS
 grecaptcha.ready(function () {
@@ -28,17 +28,17 @@ grecaptcha.ready(function () {
 });
 ```
 
-In the form, it is necessary to import the script that performs the request to return the token and the reCAPTCHA api script, passing the site key.
+###### In the form, it is necessary to import the script that performs the request to return the token and the reCAPTCHA api script, passing the site key.
 
 ```HTML
 <script src="https://www.google.com/recaptcha/api.js?render=<?php echo SITE_KEY; ?>"></script>
 <script src="./js/reCAPTCHA.js"></script>
 ```
 
-In the Send class, the Captcha class is imported, which makes the request returning some data.
+###### In the Send class, the Captcha class is imported, which makes the request returning some data.
 
-This request returns the score, which goes from 0.0 to 1.0.
-The closer to 1.0, it means you are less likely to be a robot performing the submit. This way you can define the validation accuracy according to the security of your software.
+###### This request returns the score, which goes from 0.0 to 1.0.
+###### The closer to 1.0, it means you are less likely to be a robot performing the submit. This way you can define the validation accuracy according to the security of your software.
 
 ```PHP
 <?php
