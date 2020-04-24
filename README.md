@@ -15,3 +15,15 @@ Enter the keys in the file Config/Config.php
 define("SITE_KEY", "Your site key here");
 define("SECRET_KEY", "Your secret key here");
 ```
+
+When the login page is loaded, a request will be executed returning a token.
+
+Enter the site key in the request.
+
+```JS
+grecaptcha.ready(function () {
+    grecaptcha
+        .execute('Your site key here', { action: 'homepage' })
+        .then(token => console.log(token));
+});
+```
