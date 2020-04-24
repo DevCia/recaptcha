@@ -34,3 +34,39 @@ In the form, it is necessary to import the script that performs the request to r
 <script src="https://www.google.com/recaptcha/api.js?render=<?php echo SITE_KEY; ?>"></script>
 <script src="./js/reCAPTCHA.js"></script>
 ```
+
+In the Send class, the Captcha class is imported, which makes the request returning some data.
+
+This request returns the score, which goes from 0 to 5.
+The closer to 5, it means you are less likely to be a robot performing the submit. This way you can define the validation accuracy according to the security of your software.
+
+```PHP
+<?php
+
+require "Captcha.php";
+
+class Send {
+
+    public function message($data)
+    {
+        
+        $recaptcha = $data["g-recaptcha-response"];
+        $message = $data["message"];
+
+        $captcha = new Captcha();
+        $response = $captcha->get($recaptcha);
+
+        if($response->success != true){
+            return false;
+        }
+
+        if($response->success == true && $response->score < 0.3){
+            return false;
+        }
+
+        return true;
+
+    }
+
+}
+```
